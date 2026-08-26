@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data Kepala Sekolah — SIAS</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.form{max-width:760px;margin:auto}.field{display:block;margin-bottom:18px}.field>span{display:block;font-weight:700;margin-bottom:7px}.field input{display:block;width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #d5dbe3;border-radius:10px;font:inherit;background:#fff}.save-row{margin-top:8px}.save-row button{width:100%}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="brand">📚 SIAS</div><button id="menuBtn" class="menu-btn">☰</button><div id="navlinks" class="navlinks"><a class="nav-item" href="dashboard-guru.html">🏠 Dashboard</a><a class="nav-item" href="rekap-harian.html">📅 Rekap Harian</a><a class="nav-item" href="rekap-bulanan.html">🗓️ Rekap Bulanan</a><a class="nav-item" href="pengaturan-sekolah.html">🏫 Data Sekolah</a><a class="nav-item active" href="pengaturan-kepala-sekolah.html">👨‍💼 Kepala Sekolah</a><a class="nav-item" href="pengaturan-guru.html">👨‍🏫 Data Guru</a></div><div class="user-area"><span>👨‍🏫 Guru</span><button id="logoutBtn" class="logout">Keluar</button></div></nav>
+<main class="app"><div class="page-title"><div><h1>👨‍💼 Data Kepala Sekolah</h1><p>Isi nama dan NIP Kepala Sekolah untuk digunakan otomatis pada laporan.</p></div></div>
+<section class="card form">
+<label class="field"><span>Nama Kepala Sekolah</span><input id="principal" type="text" autocomplete="name" placeholder="Masukkan nama kepala sekolah"></label>
+<label class="field"><span>NIP</span><input id="principalNip" type="text" inputmode="numeric" placeholder="Masukkan NIP kepala sekolah"></label>
+<div class="save-row"><button id="save" type="button">💾 Simpan Data Kepala Sekolah</button></div><p id="saved"></p>
+</section></main>
+<script src="js/common.js"></script>
+<script>
+const KEY='profil_sekolah_sias_v1';
+const p={principal:'',principalNip:'',...JSON.parse(localStorage.getItem(KEY)||'{}')};
+$('#principal').value=p.principal||'';$('#principalNip').value=p.principalNip||'';
+$('#save').onclick=()=>{const x={...JSON.parse(localStorage.getItem(KEY)||'{}'),principal:$('#principal').value.trim(),principalNip:$('#principalNip').value.trim()};localStorage.setItem(KEY,JSON.stringify(x));$('#saved').textContent='✅ Data Kepala Sekolah tersimpan.'};
+</script>
+</body></html>
